@@ -1,0 +1,30 @@
+How to create a wallet and use it for initiating, confirming and excecuting transactions 
+Instead of parity wallet can we use metamask 
+
+--Writing a contract for the MultiSig ----
+What all the functions this contract should have
+1. It should be able to receive ethers
+2. It should be able to send ethers and receive tokens
+3. And In turn send these tokens to all address 
+4. It should be able to initiate a transaction and wait for confirmation and once it is confimred it should be able to excecute the transaction 
+
+Parts of the contract 
+1. Events : [Confirmation, Execution, Revocation, Submission, ExecutionFailure,Deposit, OwnerAddittion, OwnerRemoval, Requirement]
+2. Initializing constants : MAX_OWNER_COUNT;
+3. Storage : [array of transactions, mapping confirmation addressess to bool,mapping the owner to bool, array of owners, transactionCount, requiredsigners 
+4. Structs : A struct of Transaction
+5. Modifiers:
+what are modifiers: Modifiers can be used to easily change the behaviour of the functions
+Eg: They can be used to check a condition automatically before excecuting a function.  
+// one example use case of function modifiers would be if we want to call the killContract function 
+// through only via owner/creator of the contract.
+
+In this contract mostly for all if condotions we have a modifier 
+Eg: onlyWallet i.e only the walletAddress; 
+Tocheck 1. ownerDoesntExist; ownerExist; transactionExists, confirmed, notConfirmed, notExecuted, notNull, validRequirement
+
+6. Fallback: We use a fallback when the user sends ether by mistake without executing any function 
+
+7. public functions: TO: addowner, removeOwner, replaceOwner, change requirement, submitTransaction, confirmTrnasaction, revokeTransaction, excecute Transaction, isConfirmed
+8. Internal functions: addTransaction 
+9. Web3 Call functions: getConfiramtionCount, getTransactionCount, getOwners, getConfirmations, getTransactionId's
